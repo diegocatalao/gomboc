@@ -5,11 +5,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Package",
+            "name": "Launch Gomboc API",
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/gomboc.go"
-        }
+            "program": "${workspaceFolder}/gomboc.go",
+            "args": ["api", "--host", "127.0.0.1", "--port", "8080"]
+        },
+        {
+            "name": "Launch Gomboc Node",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/gomboc.go",
+            "args": ["node", "--rdv-host", "127.0.0.1", "--rdv-port", "8081"]
+        },
+        {
+            "name": "Launch Gomboc RDV",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/gomboc.go",
+            "args": ["rdv", "--host", "127.0.0.1", "--port", "8081"]
+        },
     ]
 }
