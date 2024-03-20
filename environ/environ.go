@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 
 	"github.com/BurntSushi/toml"
+	"github.com/rs/zerolog/log"
 )
 
 const CONF_FILE_NAME = "gomboc.toml"
@@ -67,7 +68,10 @@ func GombocConfigLoader() GombocConfig {
 	data, err := os.ReadFile(filepath)
 
 	if err != nil {
-		panic("Unable to open configuration file " + filepath)
+		log.Error().Msgf("The file '%s' was not found. Skipped.", filepath)
+		config = GombocConfig{}
+
+		return config
 	}
 
 	_, err = toml.Decode(string(data), &config)
